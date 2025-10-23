@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'app/assets/styles/theme/variables' as *;
+
+@use 'app/assets/styles/base/reset' as *;
+
+@use 'app/assets/styles/layout/utilities' as *;
+
+@use 'app/assets/styles/state/states' as *;
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+*:focus-visible {
+  outline: 0.3vh solid $color-primary;
+  outline-offset: 0.2vh;
+}

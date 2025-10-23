@@ -1,0 +1,12 @@
+<div class="input-field" [class.has-error]="error">
+  <label class="input-field__label" *ngIf="label">
+    {{ label }}
+  </label>
+
+  <input class="input-field__input" [type]="type" [placeholder]="placeholder" [disabled]="disabled" [(ngModel)]="value"
+    (ngModelChange)="onChange($event)" (blur)="onTouched()" />
+
+  <span class="input-field__error" *ngIf="error">
+    {{ error }}
+  </span>
+</div>

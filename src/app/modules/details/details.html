@@ -1,0 +1,93 @@
+<div class="details-page">
+    <div class="details-page__header">
+        <app-button variant="ghost" size="small" (clicked)="goBack()">
+            ← Back
+        </app-button>
+        <h1 class="details-page__title">{{ currency() }} History</h1>
+        <p class="details-page__subtitle">Last 7 days</p>
+    </div>
+
+    <div class="details-page__content l-container">
+        <div class="details-page__loading" *ngIf="loading()">
+            <app-loader variant="white" size="large" text="Loading historical data..."></app-loader>
+        </div>
+
+        <div *ngIf="!loading()">
+            <div class="stats-grid l-grid l-grid--3-cols">
+                <app-card variant="default" elevation="low">
+                    <div class="stat-item">
+                        <div class="stat-item__label">Maximum</div>
+                        <div class="stat-item__value">{{ formatNumber(max()) }}</div>
+                        <div class="stat-item__unit">EGP</div>
+                    </div>
+                </app-card>
+
+                <app-card variant="default" elevation="low">
+                    <div class="stat-item">
+                        <div class="stat-item__label">Average</div>
+                        <div class="stat-item__value">{{ formatNumber(avg()) }}</div>
+                        <div class="stat-item__unit">EGP</div>
+                    </div>
+                </app-card>
+
+                <app-card variant="default" elevation="low">
+                    <div class="stat-item">
+                        <div class="stat-item__label">Minimum</div>
+                        <div class="stat-item__value">{{ formatNumber(min()) }}</div>
+                        <div class="stat-item__unit">EGP</div>
+                    </div>
+                </app-card>
+            </div>
+            <div class="mb-md">
+
+                <app-card title="Rate Trend" variant="default" elevation="medium">
+                    <div class="chart-container">
+                        <svg viewBox="0 0 100 40" class="chart-container__svg">
+                            <line *ngFor="let i of [0, 1, 2, 3, 4]" [attr.x1]="10" [attr.y1]="10 + (i * 6.25)"
+                                [attr.x2]="90" [attr.y2]="10 + (i * 6.25)" class="chart-container__grid" />
+
+                            <polyline [attr.points]="getChartPoints()" class="chart-container__line" />
+
+                            <circle *ngFor="let point of data(); let i = index" [attr.cx]="10 + (i * 15)"
+                                [attr.cy]="35 - ((point.rate - min()) / (max() - min() || 1) * 25)"
+                                class="chart-container__point" />
+                        </svg>
+
+                        <div class="chart-container__labels">
+                            <span *ngFor="let item of data()" class="chart-container__label">
+                                {{ formatDate(item.date) }}
+                            </span>
+                        </div>
+                    </div>
+                </app-card>
+            </div>
+
+            <app-card title="Detailed History" variant="default" elevation="medium">
+                <div class="data-table">
+                    <div class="data-table__row data-table__row--header">
+                        <div class="data-table__cell">Date</div>
+                        <div class="data-table__cell">Rate (EGP)</div>
+                        <div class="data-table__cell">Change</div>
+                    </div>
+
+                    <div *ngFor="let item of data(); let i = index" class="data-table__row">
+                        <div class="data-table__cell">{{ formatDate(item.date) }}</div>
+                        <div class="data-table__cell data-table__cell--rate">
+                            {{ formatNumber(item.rate) }}
+                        </div>
+                        <div class="data-table__cell">
+                            <span *ngIf="i > 0" class="change-badge"
+                                [class.change-badge--positive]="isIncrease(item.rate, data()[i-1].rate)"
+                                [class.change-badge--negative]="!isIncrease(item.rate, data()[i-1].rate)">
+                                <span *ngIf="isIncrease(item.rate, data()[i-1].rate)">↑</span>
+                                <span *ngIf="!isIncrease(item.rate, data()[i-1].rate)">↓</span>
+                                {{ getChange(item.rate, data()[i-1].rate) }}
+                            </span>
+                            <span *ngIf="i === 0" class="change-badge change-badge--neutral">−</span>
+                        </div>
+                    </div>
+                </div>
+            </app-card>
+        </div>
+    </div>
+</div>

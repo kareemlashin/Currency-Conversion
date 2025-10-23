@@ -1,0 +1,13 @@
+<div class="card card--{{variant}} card--{{elevation}}">
+  <div class="card__header" *ngIf="title">
+    <h2 class="card__title">{{ title }}</h2>
+  </div>
+
+  <div class="card__body">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="card__footer" *ngIf="hasFooter">
+    <ng-content select="[footer]"></ng-content>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<button class="button button--{{variant}} button--{{size}}" [class.is-loading]="loading" [class.is-disabled]="disabled"
+    [disabled]="disabled || loading" (click)="handleClick()" [type]="type">
+    <span class="button__icon" *ngIf="icon && !loading">{{ icon }}</span>
+
+    <span class="button__spinner" *ngIf="loading"></span>
+
+    <span class="button__text" *ngIf="!loading">
+        <ng-content></ng-content>
+    </span>
+</button>

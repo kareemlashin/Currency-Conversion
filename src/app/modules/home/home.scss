@@ -1,0 +1,75 @@
+@use '../../assets/styles/theme/variables' as *;
+
+.home-page {
+    min-height: 100vh;
+    padding: 5vh 5vw;
+    
+    background: $gradient-primary;
+    
+    &__header {
+      text-align: center;
+      margin-bottom: 5vh;
+      color: $color-white;
+    }
+    
+    &__icon {
+      font-size: 15vw;
+      margin-bottom: 2vh;
+      
+      @media (min-width: 768px) {
+        font-size: 10vw;
+      }
+    }
+    
+    &__title {
+      font-size: $font-3xl;
+      font-weight: 700;
+      margin: 0 0 1vh 0;
+    }
+    
+    &__subtitle {
+      font-size: $font-md;
+      margin: 0;
+      opacity: 0.9;
+    }
+    
+    &__content {
+      max-width: 90vw;
+      margin: 0 auto;
+      
+      @media (min-width: 768px) {
+        max-width: 70vw;
+      }
+    }
+  }
+  
+
+  
+  .swap-button-wrapper {
+    margin: $space-sm 0;
+  }
+  
+  .result-display {
+    padding: 4vh 5vw;
+    border-radius: $radius-md;
+    text-align: center;
+    margin: $space-lg 0;
+    
+    background: $gradient-primary;
+    color: $color-white;
+    
+    &__amount {
+      font-size: $font-2xl;
+      font-weight: 700;
+      margin-bottom: $space-sm;
+    }
+    
+    &__rate {
+      font-size: $font-sm;
+      opacity: 0.9;
+    }
+  }
+  
+  .action-buttons {
+    margin-top: $space-lg;
+  }

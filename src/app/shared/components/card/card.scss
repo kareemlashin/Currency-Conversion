@@ -1,0 +1,73 @@
+@use '../../../assets/styles/theme/variables' as *;
+.card {
+    border-radius: $radius-lg;
+    overflow: hidden;
+    transition: all $transition-base;
+    
+    &__header {
+      padding: $space-md $space-lg;
+      border-bottom: 1px solid $color-gray-100;
+    }
+    
+    &__title {
+      font-size: $font-lg;
+      font-weight: 700;
+      color: $color-gray-900;
+      margin: 0;
+    }
+    
+    &__body {
+      padding-block: $space-md;
+      padding-inline: $space-md;
+    
+      @media (max-width: 768px) {
+        padding-block: $space-sm;
+        padding-inline: $space-sm;
+      }
+    
+      @media (min-width: 1200px) {
+        padding-block: $space-lg;
+        padding-inline: $space-xl;
+      }
+    }
+    
+    &__footer {
+      padding: $space-md $space-lg;
+      border-top: 1px solid $color-gray-100;
+      background: $color-gray-50;
+    }
+    
+    &--default {
+      background: $color-white;
+    }
+    
+    &--gradient {
+      background: $gradient-primary;
+      color: $color-white;
+      
+      .card__title {
+        color: $color-white;
+      }
+    }
+    
+    &--outlined {
+      background: transparent;
+      border: 0.3vh solid $color-gray-200;
+    }
+    
+    &--none {
+      box-shadow: none;
+    }
+    
+    &--low {
+      box-shadow: $shadow-sm;
+    }
+    
+    &--medium {
+      box-shadow: $shadow-md;
+    }
+    
+    &--high {
+      box-shadow: $shadow-lg;
+    }
+  }

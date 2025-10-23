@@ -1,0 +1,60 @@
+@use '../../../assets/styles/theme/variables' as *;
+.select-field {
+    margin-bottom: $space-md;
+    
+    &__label {
+      display: block;
+      font-size: $font-sm;
+      font-weight: 600;
+      color: $color-gray-600;
+      margin-bottom: $space-xs;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    &__wrapper {
+      position: relative;
+    }
+
+    &__select {
+      width: 100%;
+      padding: 2vh 10vw 2vh 3vw;
+      font-size: $font-md;
+      border: 0.3vh solid $color-gray-200;
+      border-radius: $radius-sm;
+      outline: none;
+      transition: all $transition-base;
+      background: $color-white;
+      cursor: pointer;
+      appearance: none;
+      
+      &:focus {
+        border-color: $color-primary;
+        box-shadow: 0 0 0 0.3vh rgba($color-primary, 0.1);
+      }
+      
+      &:disabled {
+        background: $color-gray-50;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+      
+      @media (min-width: 768px) {
+        padding: 2vh 5vw 2vh 2vw;
+      }
+    }
+    
+    &__icon {
+      position: absolute;
+      right: 3vw;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: $color-gray-600;
+      font-size: $font-xs;
+      
+      @media (min-width: 768px) {
+        right: 2vw;
+      }
+    }
+  }

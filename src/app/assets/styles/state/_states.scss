@@ -1,0 +1,34 @@
+@use "../theme/variables.scss" as *;
+
+.is-loading {
+    opacity: 0.6;
+    pointer-events: none;
+    cursor: wait;
+  }
+  
+  .is-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+  
+  .is-hidden {
+    display: none;
+  }
+  
+  .is-active {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+  
+  .has-error {
+    border-color: $color-danger;
+    
+    &:focus {
+      box-shadow: 0 0 0 0.3vh rgba($color-danger, 0.2);
+    }
+  }
+  
+  .has-success {
+    border-color: $color-success;
+  }

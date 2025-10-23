@@ -1,0 +1,181 @@
+@use '../../assets/styles/theme/variables' as *;
+
+.details-page {
+  min-height: 100vh;
+  padding: 3vh 5vw;
+  
+  background: $gradient-primary;
+  color: $color-white;
+  
+  &__header {
+    position: relative;
+    text-align: center;
+    margin-bottom: 4vh;
+  }
+  
+  &__title {
+    font-size: $font-2xl;
+    font-weight: 700;
+    margin: 2vh 0 1vh 0;
+  }
+  
+  &__subtitle {
+    font-size: $font-md;
+    margin: 0;
+    opacity: 0.9;
+  }
+  
+  &__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+  }
+  
+  &__content {
+    max-width: 90vw;
+    margin: 0 auto;
+    
+    @media (min-width: 768px) {
+      max-width: 80vw;
+    }
+  }
+}
+
+.stats-grid {
+  margin-bottom: $space-lg;
+}
+
+.stat-item {
+  text-align: center;
+  padding: $space-sm;
+  
+  &__label {
+    font-size: $font-sm;
+    color: $color-gray-600;
+    margin-bottom: $space-xs;
+    font-weight: 600;
+  }
+  
+  &__value {
+    font-size: $font-xl;
+    font-weight: 700;
+    color: $color-gray-900;
+    margin-bottom: $space-xs;
+  }
+  
+  &__unit {
+    font-size: $font-sm;
+    color: $color-gray-400;
+    font-weight: 500;
+  }
+}
+
+.chart-container {
+  margin-bottom: $space-md;
+  
+  &__svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  &__grid {
+    stroke: $color-gray-200;
+    stroke-width: 0.2;
+    stroke-dasharray: 1, 1;
+  }
+  
+  &__line {
+    fill: none;
+    stroke: $color-primary;
+    stroke-width: 0.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  
+  &__point {
+    r: 1;
+    fill: $color-primary;
+    stroke: $color-white;
+    stroke-width: 0.3;
+  }
+  
+  &__labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $space-sm;
+    padding: 0 2vw;
+  }
+  
+  &__label {
+    font-size: $font-xs;
+    color: $color-gray-600;
+    font-weight: 500;
+  }
+}
+
+.data-table {
+  width: 100%;
+  
+  &__row {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1.5fr;
+    padding: 2vh 2vw;
+    border-bottom: 1px solid $color-gray-100;
+    transition: background-color $transition-fast;
+    
+    &--header {
+      background: $color-gray-50;
+      font-weight: 700;
+      font-size: $font-sm;
+      color: $color-gray-600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    &:hover:not(&--header) {
+      background: $color-gray-50;
+    }
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  &__cell {
+    font-size: $font-sm;
+    color: $color-gray-900;
+    display: flex;
+    align-items: center;
+    
+    &--rate {
+      font-weight: 600;
+      font-family: 'SF Mono', Monaco, monospace;
+    }
+  }
+}
+
+.change-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5vw;
+  padding: 0.5vh 2vw;
+  border-radius: $radius-sm;
+  font-size: $font-xs;
+  font-weight: 600;
+  
+  &--positive {
+    background: $color-success;
+    color: $dark-text;
+  }
+  
+  &--negative {
+    background: $color-success;
+    color: $color-danger;
+  }
+  
+  &--neutral {
+    background: $color-gray-100;
+    color: $color-gray-600;
+  }
+}

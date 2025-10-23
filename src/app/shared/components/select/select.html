@@ -1,0 +1,15 @@
+<div class="select-field">
+  <label class="select-field__label" *ngIf="label">
+    {{ label }}
+  </label>
+
+  <div class="select-field__wrapper">
+    <select class="select-field__select" [disabled]="disabled" [(ngModel)]="value" (ngModelChange)="onChange($event)"
+      (blur)="onTouched()">
+      <option *ngFor="let option of options" [value]="option.value">
+        {{ option.label }}
+      </option>
+    </select>
+    <span class="select-field__icon">▼</span>
+  </div>
+</div>

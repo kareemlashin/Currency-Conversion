@@ -1,0 +1,86 @@
+
+<div class="home-page">
+    <div class="home-page__header">
+      <div class="home-page__icon">💱</div>
+      <h1 class="home-page__title">Currency Converter</h1>
+      <p class="home-page__subtitle">Real-time exchange rates</p>
+    </div>
+  
+    <div class="home-page__content l-container">
+      <app-card variant="default" elevation="high">
+        <div class="converter-form">
+          <app-input
+            label="Amount"
+            type="number"
+            [ngModel]="amount()"
+            (ngModelChange)="onAmountChange($event)"
+            placeholder="Enter amount"
+          ></app-input>
+  
+          <app-select
+            label="From"
+            [options]="currencyOptions"
+            [ngModel]="from()"
+            (ngModelChange)="onFromChange($event)"
+          ></app-select>
+  
+          <div class="swap-button-wrapper l-flex l-flex--center">
+            <app-button
+              variant="secondary"
+              size="small"
+              [disabled]="isLoading"
+              (clicked)="swapCurrencies()"
+            >
+              ⇅
+            </app-button>
+          </div>
+  
+          <app-select
+            label="To"
+            [options]="currencyOptions"
+            [ngModel]="to()"
+            (ngModelChange)="onToChange($event)"
+          ></app-select>
+  
+          <div class="result-display" *ngIf="result() > 0">
+            <div class="result-display__amount">
+              {{ formatNumber(result()) }} {{ to() }}
+            </div>
+            <div class="result-display__rate">
+              1 {{ from() }} = {{ rate.toFixed(4) }} {{ to() }}
+            </div>
+          </div>
+  
+          <div class="action-buttons l-grid l-grid--2-cols">
+            <div class="l-grid--full">
+              <app-button
+                variant="primary"
+                size="large"
+                [loading]="isLoading"
+                (clicked)="calculate()"
+              >
+                Convert
+              </app-button>
+            </div>
+  
+            <app-button
+              variant="secondary"
+              size="medium"
+              (clicked)="goToDetails()"
+            >
+              Details
+            </app-button>
+  
+            <app-button
+              size="medium"
+              icon="🔄"
+              [loading]="isLoading"
+              (clicked)="syncRate()"
+            >
+              Sync
+            </app-button>
+          </div>
+        </div>
+      </app-card>
+    </div>
+  </div>
